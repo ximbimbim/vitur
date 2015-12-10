@@ -1,0 +1,132 @@
+body.modal-open {
+	overflow-y: auto;
+	padding-right: 0 !important;	
+}
+.header
+{	
+	width: 100%;
+	background-color: #cfe;
+	margin-top: 48px;
+}
+.vt-logo
+{
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	width: 300px;
+	left: 50%;
+	top: 100px;
+	margin-left: -150px;
+}
+.pull-center
+{
+	display: block;
+	margin: 0 auto;
+}
+.navbar-center
+{
+	text-align: center;
+}
+.nav-center
+{
+	display: inline-block;
+	float: none;
+	vertical-align: top;
+}
+.nav.navbar-nav.pull-right li a
+{
+	outline: none;
+}
+.navbar.navbar-default
+{
+	margin: 0;
+}
+.navbar.navbar-inverse
+{
+	border-radius: 0;
+}
+.navbar.navbar-inverse .nav.navbar-nav > li > a
+{
+	color: #cfe !important;
+}
+.navbar.navbar-inverse .nav.navbar-nav > li > a:hover,
+.navbar.navbar-inverse .nav.navbar-nav > li.active > a:hover
+{
+	color: #fff !important;
+}
+.btn.btn-custom,
+.btn.btn-custom:active
+{
+	background-image: url(../img/btn-bg.jpg);
+	background-repeat: repeat-x;
+	background-size: 1px 42px;
+	height: 37px;
+	padding-left: 30px;
+	padding-right: 30px;
+	color: black;
+	border-radius: 25px;
+}
+.btn.btn-custom:hover,
+.btn.btn-custom:focus
+{
+	.btn-default();	
+	
+	background-image: url(../img/btn-bg.jpg);
+	color: white;
+	text-shadow: 0 0 10px yellow;
+	outline: none;
+	animation-name: btn-hover-anim;
+	animation-duration: 0.3s;
+}
+@keyframes btn-hover-anim {
+    from {color: black;}
+    to {color: white;text-shadow: 0 0 10px yellow;}
+}
+hr
+{
+	border-color: #00bb7e;
+}
+.window
+{
+	background-color: #e6fff7;
+	background-image: url(../img/vitur_palm.png);
+	background-repeat: no-repeat;
+	background-position: 100% 100%;
+	padding: 30px;
+	margin: 10px;
+	border: 1px solid green;
+	border-radius: 10px;
+}
+.window input[type=number],
+.window input[type=text],
+.window input[type=password],
+.window select
+{
+	background-color: rgba( 255, 255, 255, 0.5 );	
+}
+.modal-content
+{
+	background-color: #e6fff7;
+	background-image: url(../img/vitur_palm.png);
+	background-repeat: no-repeat;
+	background-position: 100% 100%;
+}
+.modal-content input[type=text],
+.modal-content input[type=number],
+.modal-content input[type=password]
+{
+	background-color: rgba( 255, 255, 255, 0.5 );	
+}
+.btn.btn-primary
+{
+	background-color: #00bb7e;
+}
+.btn.btn-primary:hover,
+.btn.btn-primary:active
+{
+	background-color: #4bcca0;
+}
+.footer
+{
+	margin-top: 20px;
+}

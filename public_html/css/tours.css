@@ -1,0 +1,123 @@
+.clickable-info { cursor: pointer; }
+
+.tour-info th 	{ min-width: 85px; }
+.tour-info td 	{ min-width: 30px; }
+
+.tour-info .glyphicon-arrow-right 	{ color: green; }
+.tour-info .glyphicon-arrow-left 	{ color: red; }
+
+.media
+{
+	background-color: #cfe;
+	background-image: url(../img/vitur_palm.png);
+	background-repeat: no-repeat;
+	background-position: 100% 100%;	
+	padding: 10px;
+	padding-top: 20px;
+	padding-bottom: 0;
+	border-radius: 5px;
+	border: 1px solid green;
+}
+@media (min-width: 1199px) {
+	.media-title
+	{
+		display: inline-block;
+		position: absolute;	
+		background-color: yellow;
+		border: 1px solid red;
+		border-top: none;
+		border-bottom-right-radius: 10px;
+		border-bottom-left-radius: 10px;
+		padding: 10px;
+		margin: 0;
+		left: 50px;
+		top: 1px;
+	}
+	.media-price
+	{
+		display: inline-block;
+		position: absolute;	
+		background-color: yellow;
+		border: 1px solid red;
+		border-radius: 30px;
+		box-shadow: 0 0 15px #777;
+		padding: 5px;
+		padding-left: 15px;
+		padding-right: 15px;
+		margin: 0;
+		left: 980px;
+		top: 235px;
+		color: red;
+	}
+	.mini .media-price
+	{
+		display: inline-block;
+		position: absolute;	
+		background-color: yellow;
+		border: 1px solid red;
+		border-radius: 30px;
+		box-shadow: 0 0 15px #777;
+		padding: 5px;
+		padding-left: 15px;
+		padding-right: 15px;
+		margin: 0;
+		left: 400px;
+		top: 180px;
+		color: red;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+	.media-title
+	{
+		display: inline-block;
+		position: absolute;	
+		background-color: yellow;
+		border: 1px solid red;
+		border-top: none;
+		border-bottom-right-radius: 10px;
+		border-bottom-left-radius: 10px;
+		padding: 10px;
+		margin: 0;
+		left: 50px;
+		top: 1px;
+	}
+	.media-price
+	{
+		display: inline-block;
+		position: absolute;	
+		background-color: yellow;
+		border: 1px solid red;
+		border-radius: 30px;
+		box-shadow: 0 0 15px #777;
+		padding: 5px;
+		padding-left: 15px;
+		padding-right: 15px;
+		margin: 0;
+		left: 780px;
+		top: 235px;
+		color: red;
+	}
+	.mini .media-price
+	{
+		display: inline-block;
+		position: absolute;	
+		background-color: yellow;
+		border: 1px solid red;
+		border-radius: 30px;
+		box-shadow: 0 0 15px #777;
+		padding: 5px;
+		padding-left: 15px;
+		padding-right: 15px;
+		margin: 0;
+		left: 45px;
+		top: 180px;
+		color: red;
+	}
+}
+
+.media-heading,
+.col-md-12,
+.col-lg-12,
+.col-lg-6,
+.media,
+.col-md-6 { margin-bottom: 20px; }

@@ -1,0 +1,298 @@
+/****************************************************************************
+ * FORM
+ ****************************************************************************/
+.vtr-form
+{
+	box-shadow: 2px 2px 6px #444;
+	border: 1px solid green;
+	border-radius: 10px;
+	margin-bottom: 15px;
+}
+.vtr-form-body input[type=number],
+.vtr-form-body input[type=text],
+.vtr-form-body input[type=password],
+.vtr-form-body select,
+.vtr-form-body textarea
+{
+	background-color: rgba( 255, 255, 255, 0.65 );
+	padding: 1px 5px 1px 5px;
+	height: 25px;
+}
+.vtr-form-body textarea
+{
+	resize: none;
+}
+.vtr-form-title
+{
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	background-color: #74E5C8;
+	border-bottom: 1px solid green;
+	padding: 10px 20px 5px 20px;	
+	font-size: 18px;
+}
+.vtr-form-body
+{
+	background-color: #e6fff7;
+	background-image: url("/vtr-app/public_html/img/vitur_palm.png");
+	background-repeat: no-repeat;
+	background-position: 0% 100%;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	min-height: 300px;
+	padding: 20px;
+}
+.vtr-form-footer
+{
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	padding: 10px 20px 10px 20px;
+	border-top: 1px solid green;
+}
+.vtr-form .btn-primary,
+.vtr-form .btn-primary:hover,
+.vtr-form .btn-primary:active,
+.vtr-form .btn-default,
+.vtr-form .btn-default:hover,
+.vtr-form .btn-default:active
+{
+	border-color: #ccc;
+	outline: none;
+	border-radius: 20px;
+	padding: 3px 15px 3px 15px;
+}
+/****************************************************************************
+ * SEARCH BAR
+ ****************************************************************************/
+.vtr-order-bar
+{
+ 	padding: 5px 25px 5px 25px;
+ 	background-color: #74E5C8;
+ 	box-shadow: 2px 2px 6px #444;
+ 	border-top-left-radius: 8px;
+ 	border-top-right-radius: 8px;
+ 	border-bottom: 4px solid yellow;
+ 	width: 100%;
+ 	margin-bottom: 15px;
+}
+.vtr-order-title
+{
+	display: inline-block;
+	font-size: 18px;
+}
+.vtr-order-input
+{
+ 	width: 300px;
+}
+.vtr-order-input input,
+.vtr-order-input select
+{
+	display: inline;
+	width: 210px;
+ 	padding: 2px;
+ 	height: 25px;
+ 	color: #555;
+}
+.vtr-order-input input:focus,
+.vtr-order-input select:focus
+{
+	border-color: #21AB89;	
+	box-shadow: 0 0 5px #74E5C8;
+}
+/****************************************************************************
+ * TOUR ITEM
+ ****************************************************************************/
+.vtr-tour-item
+{
+	display: block;
+	width: 100%;
+	box-shadow: 2px 2px 6px #444;
+	margin: 20px 0px 20px 0px;
+}
+.vtr-tour-item:first-child
+{
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+.vtr-tour-item:last-child
+{
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+.vtr-tour-item
+{
+	margin: 0px 0px 20px 0px;
+}
+.vtr-tour-img
+{
+	display: table-cell;
+	width: 40%;
+	height: auto;
+	border-top: 1px solid #333;
+	border-left: 1px solid #333;
+	border-bottom: 1px solid #333;
+}
+.vtr-tour-body
+{
+	display: table-cell;
+	vertical-align: top;
+	background-color: white;
+	border-top: 1px solid #333;
+	border-right: 1px solid #333;
+}
+.vtr-tour-body p,
+.vtr-tour-body h3 { margin: 2px 0 0 10px; padding: 0; }
+.vtr-features-box .fa { font-size: 18px; margin: 0 3px 0 3px; }
+.vtr-features-box .fa:first-child { margin-left: 10px; }
+@media (min-width: 1199px) {
+	.vtr-features-box
+	{
+		display: inline-block;
+		position: absolute;
+		height: 29px;
+		width: 100%;
+		top: 91px;
+	}
+	.vtr-price-box
+	{
+		display: inline-block;
+		position: absolute;
+		background-color: rgba( 255, 255, 0, 0.6);
+		border-top: 3px solid red;
+		height: 75px;
+		width: 100%;
+		top: 126px;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+	.vtr-features-box
+	{
+		display: inline-block;
+		position: absolute;
+		height: 29px;
+		width: 100%;
+		top: 60px;
+	}
+	.vtr-price-box
+	{
+		display: inline-block;
+		position: absolute;
+		background-color: rgba( 255, 255, 0, 0.6);
+		border-top: 3px solid red;
+		height: 75px;
+		width: 100%;
+		top: 89px;
+	}
+}
+.vtr-tour-tool
+{
+	display: block;
+	border: 1px solid #333;
+	padding: 5px 10px 5px 10px;
+	background-color: white;
+}
+.vtr-ticket-table { margin: 10px auto; }
+.vtr-ticket-table td:first-child { padding: 0px 20px 0px 0px; }
+.vtr-ticket-table td:last-child { padding: 0px 0px 0px 20px; }
+.vtr-ticket-table td { padding: 0px 20px 0px 20px; }
+.vtr-see-map,
+.vtr-see-map:hover,
+.vtr-see-map:visited
+{
+	color: red;
+	font-weight: bold;
+	text-decoration: none;
+}
+.vtr-see-map .glyphicon { font-size: 18px; }
+.vtr-price-value { text-align: center; }
+.vtr-price-value sub { top: 0px; font-size: 12px; }
+.vtr-price-value sup { top: -4px; }
+.vtr-price-parcel { text-align: center; }
+.vtr-price-parcel sub { top: -1px; font-size: 14px; }
+.vtr-price-parcel sup { top: -4px; }
+/****************************************************************************
+ * TOOL BAR
+ ****************************************************************************/
+.vtr-tool-bar
+{
+ 	padding: 5px 25px 5px 25px;
+ 	background-color: #74E5C8;
+ 	box-shadow: 2px 2px 6px #444;
+ 	border-bottom-left-radius: 8px;
+ 	border-bottom-right-radius: 8px;
+ 	border-top: 4px solid yellow;
+ 	width: 100%;
+}
+.vtr-tool-bar p
+{
+	margin: 0;
+	padding: 0;
+}
+/****************************************************************************
+ * TOOL BAR
+ ****************************************************************************/
+.vtr-tool-bar
+{
+ 	padding: 5px 25px 5px 25px;
+ 	background-color: #74E5C8;
+ 	box-shadow: 2px 2px 6px #444;
+ 	border-bottom-left-radius: 8px;
+ 	border-bottom-right-radius: 8px;
+ 	border-top: 4px solid yellow;
+ 	width: 100%;
+ 	min-height: 38px;
+}
+.vtr-tool-bar p
+{
+	margin: 0;
+	padding: 0;
+}
+/****************************************************************************
+ * PAGINATION
+ ****************************************************************************/
+.vtr-pagination-bar
+{
+	margin: 0 auto;
+	border-spacing: 0;
+	border-collapse: collapse;
+	text-align: center;	
+}
+.vtr-pagination-bar a:hover,
+.vtr-pagination-bar .active a
+{
+	background-color: #A7EEDC;
+}
+.vtr-pagination-bar .active a
+{
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+.vtr-pagination-bar .disable a
+{
+	cursor: default;
+	background-color: white;
+	color: #bbb;
+}
+.vtr-pagination-bar a
+{
+	display: inline-block;
+	background-color: white;
+	padding: 1px 7px 1px 7px;
+	text-decoration: none;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	width: 27px;
+	color: black;
+}
+.vtr-pagination-bar td:first-child > a
+{
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-left: 1px solid black;
+}
+.vtr-pagination-bar td:last-child > a
+{
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-right: 1px solid black;
+}

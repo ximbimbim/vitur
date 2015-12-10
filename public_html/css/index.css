@@ -1,0 +1,91 @@
+.promo-box
+{
+	width: 100%;
+	height: 400px;
+}
+.info-title
+{
+	margin-top: 65px;
+	margin-left: 20px;
+	color: #00b077;
+	text-shadow: 0 1px 2px #cfe;
+}
+.item > img
+{
+	margin: 0 auto;
+}
+.left.carousel-control,
+.right.carousel-control
+{
+	background-image: none !important;
+}
+.carousel-control > span
+{
+	color: #387;
+}
+.left.carousel-control
+{
+	left: -20px;
+}
+.right.carousel-control
+{
+	margin-right: -20px;
+}
+@media (min-width: 1199px) {
+	.mini-promo-box .title-box
+	{
+		position: absolute;
+		top: 10px;
+		left: 25px;
+		padding: 3px;
+		background-color: yellow;
+		border: 1px solid black;
+		color: red;
+		font-weight: bold;
+	}
+	.mini-promo-box .price-box
+	{
+		position: absolute;
+		top: 200px;
+		left: 255px;
+		padding: 3px;
+		background-color: yellow;
+		border: 1px solid black;
+		color: #387;
+		font-size: 20px;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+	.mini-promo-box .title-box
+	{
+		position: absolute;
+		top: 10px;
+		left: 25px;
+		padding: 3px;
+		background-color: yellow;
+		border: 1px solid black;
+		color: red;
+		font-weight: bold;
+		font-size: 12px;
+	}
+	.mini-promo-box .price-box
+	{
+		position: absolute;
+		top: 160px;
+		left: 210px;
+		padding: 3px;
+		background-color: yellow;
+		border: 1px solid black;
+		color: #387;
+		font-size: 16px;
+	}
+}
+.media-object
+{
+	width: 90px;
+}
+.last-box
+{
+	margin-bottom: 80px;
+	margin-top: 80px;
+}
