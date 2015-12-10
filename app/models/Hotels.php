@@ -13,7 +13,9 @@ use Yii;
  * @property double $price
  * @property double $parcel
  *
- * @property Features[] $features
+ * @property HotelFeatures[] $hotelFeatures
+ * @property Features[] $featuresFks
+ * @property Tours[] $tours
  */
 class Hotels extends \yii\db\ActiveRecord
 {
@@ -49,23 +51,29 @@ class Hotels extends \yii\db\ActiveRecord
             'parcel' => Yii::t('app', 'Parcel'),
         ];
     }
-    
+
     /**
-     * extraFields
-     * {@inheritDoc}
-     * @see \yii\db\BaseActiveRecord::extraFields()
+     * @return \yii\db\ActiveQuery
      */
-    public function extraFields()
+    public function getHotelFeatures()
     {
-    	return [ 'features' ];
+        return $this->hasMany(HotelFeatures::className(), ['hotel_fk' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFeatures()
+    public function getFeaturesFks()
     {
-        return $this->hasMany(Features::className(), ['hotel' => 'id']);
+        return $this->hasMany(Features::className(), ['id' => 'features_fk'])->viaTable('hotel_features', ['hotel_fk' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTours()
+    {
+        return $this->hasMany(Tours::className(), ['hotel_fk' => 'id']);
     }
 
     /**

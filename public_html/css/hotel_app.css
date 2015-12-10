@@ -181,7 +181,7 @@
 		border-top: 3px solid red;
 		height: 75px;
 		width: 100%;
-		top: 89px;
+		top: 90px;
 	}
 }
 .vtr-tour-tool
@@ -222,25 +222,6 @@
  	border-bottom-right-radius: 8px;
  	border-top: 4px solid yellow;
  	width: 100%;
-}
-.vtr-tool-bar p
-{
-	margin: 0;
-	padding: 0;
-}
-/****************************************************************************
- * TOOL BAR
- ****************************************************************************/
-.vtr-tool-bar
-{
- 	padding: 5px 25px 5px 25px;
- 	background-color: #74E5C8;
- 	box-shadow: 2px 2px 6px #444;
- 	border-bottom-left-radius: 8px;
- 	border-bottom-right-radius: 8px;
- 	border-top: 4px solid yellow;
- 	width: 100%;
- 	min-height: 38px;
 }
 .vtr-tool-bar p
 {

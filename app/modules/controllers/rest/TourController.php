@@ -28,9 +28,11 @@ class TourController extends ActiveController
 	public function actionIndex()
 	{		
 		$provider = new ActiveDataProvider([
-			'query' => Tours::find()->with( [ 'hotelFk', 'hotelFk.features' ] )->asArray(),
+			'query' => Tours::find()
+				->with( [ 'hotelFk', 'hotelFk.hotelFeatures', 'hotelFk.hotelFeatures.featuresFk' ] )
+				->asArray(),
 			'pagination' => [
-				'pageSize' => 6,
+				'pageSize' => 2,
 			],
 		]);
 		

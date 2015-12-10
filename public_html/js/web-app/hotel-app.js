@@ -105,6 +105,31 @@ search_app.factory( 'PaginationService', function( $http ) {
 					}
 				} );
 			}
+		},
+		
+		/**
+		 * changePage
+		 */
+		changePage 	: function( page ) {
+			var $self = this;
+			
+			// Setup page
+			$self.formData.page = page;
+					
+			// Realiza consulta
+			$http({
+				url 	: $self.url,				
+				params	: $self.formData,
+				method	: 'get'
+			})
+			.success( function( res, status, header, xhr ) {
+				// 200: OK
+				if ( status == 200 ) {					
+					// Configura dados de paginação
+					$self.page		= header( 'X-Pagination-Current-Page' );;
+					$self.pageData	= res;
+				}
+			} );
 		}
 	};
 } );
@@ -162,6 +187,8 @@ search_app.directive( 'vtrPagination', function( $compile, PaginationService ) {
 			
 			$scope.backBtn = function() { return PaginationService.page == 1; }
 			$scope.nextBtn = function() { return PaginationService.page == PaginationService.pageCount }
+			
+			$scope.changePage = function( page ) { PaginationService.changePage( page ); }
 		},
 		link	 	: function( $scope, $el, $attrs ) {					
 			// Detecta mudanca no serviço

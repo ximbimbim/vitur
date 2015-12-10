@@ -112,7 +112,7 @@ $this->registerCssFile( '@web/css/tour_app.css', [ 'depends' => 'app\assets\Angu
 								<h3>{{tour.hotelFk.name}}</h3>
 								<p><strong><?= Yii::t( 'app', 'Localization' ) ?></strong> <a href="" class="vtr-see-map"><span class="glyphicon glyphicon-pushpin"></span> <?= Yii::t( 'app', 'Map' ) ?></a></p>
 								<div class="vtr-features-box">									
-									<span data-ng-repeat="feature in tour.hotelFk.features" class="fa fa-{{feature.class}}"></span>
+									<span data-ng-repeat="feature in tour.hotelFk.hotelFeatures" class="fa fa-{{feature.featuresFk.class}}"></span>
 								</div>
 								<div class="vtr-price-box">
 									<h4 class="vtr-price-value"><sub>R$</sub> {{tour.hotelFk.price}}<sup>,{{tour.hotelFk.price % 100}}</sup></h4>

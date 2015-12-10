@@ -8,11 +8,11 @@ use Yii;
  * This is the model class for table "features".
  *
  * @property integer $id
- * @property integer $hotel
  * @property string $name
  * @property string $class
  *
- * @property Hotels $hotel0
+ * @property HotelFeatures[] $hotelFeatures
+ * @property Hotels[] $hotelFks
  */
 class Features extends \yii\db\ActiveRecord
 {
@@ -30,8 +30,6 @@ class Features extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['hotel'], 'required'],
-            [['hotel'], 'integer'],
             [['name'], 'string', 'max' => 100],
             [['class'], 'string', 'max' => 30]
         ];
@@ -44,28 +42,25 @@ class Features extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'hotel' => Yii::t('app', 'Hotel'),
             'name' => Yii::t('app', 'Name'),
             'class' => Yii::t('app', 'Class'),
         ];
-    }
-    
-    /**
-     * extraFields
-     * {@inheritDoc}
-     * @see \yii\db\BaseActiveRecord::extraFields()
-     */
-    public function extraFields()
-    {
-    	return [ 'hotel0' ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHotel0()
+    public function getHotelFeatures()
     {
-        return $this->hasOne(Hotels::className(), ['id' => 'hotel']);
+        return $this->hasMany(HotelFeatures::className(), ['features_fk' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getHotelFks()
+    {
+        return $this->hasMany(Hotels::className(), ['id' => 'hotel_fk'])->viaTable('hotel_features', ['features_fk' => 'id']);
     }
 
     /**

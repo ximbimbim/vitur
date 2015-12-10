@@ -57,16 +57,6 @@ class Tours extends \yii\db\ActiveRecord
             'airport_back' => Yii::t('app', 'Airport Back'),
         ];
     }
-    
-    /**
-     * extraFields
-     * {@inheritDoc}
-     * @see \yii\db\BaseActiveRecord::extraFields()
-     */
-    public function extraFields()
-    {
-    	return [ 'hotelFk' ];
-    }
 
     /**
      * @return \yii\db\ActiveQuery

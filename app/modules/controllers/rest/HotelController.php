@@ -28,9 +28,12 @@ class HotelController extends ActiveController
 	public function actionIndex( $to )
 	{		
 		$provider = new ActiveDataProvider([
-			'query' => Hotels::find()->where([ 'to' => $to ])->with( 'features' ),
+			'query' => Hotels::find()
+				->where([ 'to' => $to ])
+				->with([ 'hotelFeatures', 'hotelFeatures.featuresFk' ])
+				->asArray(),
 			'pagination' => [
-				'pageSize' => 6,
+				'pageSize' => 2,
 			],
 		]);
 		
