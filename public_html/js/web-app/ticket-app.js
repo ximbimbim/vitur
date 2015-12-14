@@ -4,7 +4,7 @@
 var search_app = angular.module( 'searchApp', [] );
 
 /**
- * Configa cabecalho padrao
+ * Configura cabecalho padrao
  */
 search_app.config([ '$httpProvider', function( $httpProvider ) {
 	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -16,93 +16,111 @@ search_app.config([ '$httpProvider', function( $httpProvider ) {
  */
 search_app.controller( 'searchCtrl', function( $scope, $http ) {
 	// Inicia variaveis
-	$scope.searchData 			= {};
-	$scope.searchData.adults    = 1;
-	$scope.searchData.childrens = 0;
-	$scope.loading 				= false;
-	$scope.dataPromise 			= null;
-	
-	// Configura eventos
-	$scope.$on( 'LOAD',   function() { $scope.loading = true; } );
-	$scope.$on( 'UNLOAD', function() { $scope.loading = false; } );
-	
+	$scope.formData 			= {};
+	$scope.formData.to			= 'Buzios';
+	$scope.formData.from		= 'Belo Horizonte';
+	$scope.formData.adults		= true;
+	$scope.formData.childrens	= false;
+	$scope.formData.go			= '20/12/2015';
+	$scope.formData.back		= '28/12/2015';
+	$scope.page					= null;
+	$scope.pageCount			= null;
+	$scope.url					= {};
+	$scope.loading				= false;
+		
 	// Inicia datepickers
 	angular.element( document ).ready( function() {
-		// Mostras erro
-		angular.element( "#searchApp_viewer" ).removeClass( 'hide' );
+		angular.element( "#searchApp_viewer" ).removeClass( 'hide' );		
 		
-		// Setup datepicker language
-		if ( angular.element( 'html' ).attr( 'lang' ) == 'en-US' )
-			$.datepicker.setDefaults($.datepicker.regional['en']);
-		else
-		if ( angular.element( 'html' ).attr( 'lang' ) == 'pt-BR' )
-			$.datepicker.setDefaults($.datepicker.regional['pt']);
+		// Configura linguagem
+		$.datepicker.setDefaults(
+			$.datepicker.regional[ angular.element( 'html' ).attr( 'lang' ) ]
+		);
 		
-		// Setup min date
-		angular.element( "[data-ng-model='searchData.go']" ).datepicker({
+		// Configura datepicker de ida
+		angular.element( '[data-ng-model="formData.go"]' ).datepicker({
+			minDate 	: 7,
 			dateFormat 	: 'dd/mm/yy',
-			minDate 	: 8,			
 		});
 		
-		// Setup min date
-		angular.element( "[data-ng-model='searchData.back']" ).datepicker({
+		angular.element( '[data-ng-model="formData.back"]' ).datepicker({
 			dateFormat 	: 'dd/mm/yy',
 		});
 	} );
 	
-	/**
-	 * updateBack
-	 */
+	// Setup datepicker
+	$scope.selectGoDate = function() {		
+		angular.element( '[data-ng-model="formData.go"]' ).datepicker( 'show' );
+	};
+	
+	// Setup datepicker
 	$scope.updateBack = function() {
-		var date 	 = $scope.searchData.go.split( '/' );
-		var cur_date = new Date( date[ 1 ] + "/" + date[ 0 ] + "/" + date[ 2 ] );
-		var now_date = new Date();
-		var dif_date = Math.round( Math.abs( cur_date - now_date ) / ( 1000 * 60 * 60 * 24 ) );
-		
-		// Define data minima de volta
-		angular.element( "[data-ng-model='searchData.back']" ).datepicker( 'option', 'minDate', dif_date + 7 );
-		
-		// Limpa volta
+		var $d		 = $scope.formData.go.split( '/' );
+		var go_date  = new Date( $d[1] + '-' + $d[0] + '-' + $d[2] );
+		var cur_date = new Date();
+		var diff 	 = go_date.getDate() - cur_date.getDate();
+
+		// Limpa campo
 		$scope.searchData.back = '';
+		
+		// inicia datepicker
+		angular.element( '[data-ng-model="formData.back"]' ).datepicker( 'option', 'minDate', diff + 3 );		
 	};
 	
 	/**
+	 * changePage
+	 */
+	$scope.changePage	= function( page ) {
+		var $self = $scope;
+		
+		// Define flag de loading
+		$self.loading = true;
+		
+		// Setup page
+		if ( page !== null ) $self.formData.page = page;
+				
+		// Realiza consulta
+		$http({
+			url 	: $self.url,				
+			params	: $self.formData,
+			method	: 'get'
+		})
+		.success( function( res, status, header, xhr ) {
+			// 200: OK
+			if ( status == 200 ) {					
+				// Configura dados de paginação
+				$self.page		= header( 'X-Pagination-Current-Page' );
+				$self.pageCount = header( 'X-Pagination-Page-Count' );
+				$self.pageData	= res;
+			}
+			
+			// Define flag de loading
+			$self.loading = false;
+		} );
+	};
+			
+	/**
 	 * submitSearch
 	 */
-	$scope.submitSearch = function( url ) {
+	$scope.submitSearch = function() {
 		$scope.hasError = false;
 		$scope.msgError = "";
-
+		
 		// Valida dados do formulario
-		if ( $scope.searchFrm.back.$invalid ) {	$scope.hasError = true;	$scope.msgError = "Selecione a data de volta.";	}		
-		if ( $scope.searchFrm.go.$invalid )   { $scope.hasError = true; $scope.msgError = "Selecione a data de ida."; }
-		if ( $scope.searchFrm.from.$invalid ) { $scope.hasError = true; $scope.msgError = "Selecione a cidade de origem."; }	
-		if ( $scope.searchFrm.to.$invalid )   { $scope.hasError = true; $scope.msgError = "Selecione a cidade de destino."; }
+		if ( $scope.searchFrm.to.$invalid ) 	{ $scope.hasError = true; $scope.msgError = "Selecione o destino.";	}
+		if ( $scope.searchFrm.from.$invalid ) 	{ $scope.hasError = true; $scope.msgError = "Selecione a origem."; }
+		if ( $scope.searchFrm.go.$invalid ) 	{ $scope.hasError = true; $scope.msgError = "Selecione a data de ida."; }
+		if ( $scope.searchFrm.back.$invalid ) 	{ $scope.hasError = true; $scope.msgError = "Selecione a data de volta."; }
+		
+		// Valida tipo de assentos
+		if ( $scope.formData.adults == false && $scope.formData.childrens == false ) {
+			$scope.hasError = true;
+			$scope.msgError = "Selecione pelo menos uma opção de tipo de assento.";
+			return false;
+		}
 		
 		// Find
-		if ( $scope.searchFrm.$valid ) {
-			// Coloca em estado de loading
-			$scope.$emit( 'LOAD' );
-			
-			// Limpa dados do resultado de consulta
-			$scope.resultData = null;
-			
-			// Solicita informacoes por ajax
-			$http.post( url, $scope.searchData )
-				.then(
-				/**
-				 * Success
-				 */
-				function( res ) {
-					$scope.$emit( 'UNLOAD' );
-					$scope.resultData = res;
-				},
-				/**
-				 * Error
-				 */
-				function( res ) {					
-				}
-			); // ./then
-		}
+		if ( $scope.searchFrm.$valid )
+			$scope.changePage( null );
 	};
 } );

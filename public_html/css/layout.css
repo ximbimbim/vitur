@@ -54,6 +54,31 @@ body.modal-open {
 {
 	color: #fff !important;
 }
+.navbar-form.navbar-left
+{
+	margin-top: 10px;
+}
+.navbar-form.navbar-left input
+{
+	height: 25px;
+	padding-top: 0;
+	padding-bottom: 0;
+	border-radius: 10px;
+	margin-top: 0px;
+}
+.navbar-form.navbar-left .glyphicon,
+.navbar-form.navbar-left .glyphicon:active
+{
+	font-size: 18px;
+	color: #cfe;
+	top: 5px;
+	text-decoration: none;
+}
+.navbar-form.navbar-left .glyphicon:hover
+{
+	color: white;
+	text-decoration: none;
+}
 .btn.btn-custom,
 .btn.btn-custom:active
 {

@@ -9,12 +9,12 @@ use Yii;
  *
  * @property integer $id
  * @property string $name
- * @property string $to
+ * @property string $city_fk
  * @property double $price
- * @property double $parcel
  *
  * @property HotelFeatures[] $hotelFeatures
  * @property Features[] $featuresFks
+ * @property City $cityFk
  * @property Tours[] $tours
  */
 class Hotels extends \yii\db\ActiveRecord
@@ -33,8 +33,9 @@ class Hotels extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['price', 'parcel'], 'number'],
-            [['name', 'to'], 'string', 'max' => 100]
+            [['price'], 'number'],
+            [['name'], 'string', 'max' => 100],
+            [['city_fk'], 'string', 'max' => 5]
         ];
     }
 
@@ -46,9 +47,8 @@ class Hotels extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
-            'to' => Yii::t('app', 'To'),
+            'city_fk' => Yii::t('app', 'City Fk'),
             'price' => Yii::t('app', 'Price'),
-            'parcel' => Yii::t('app', 'Parcel'),
         ];
     }
 
@@ -66,6 +66,14 @@ class Hotels extends \yii\db\ActiveRecord
     public function getFeaturesFks()
     {
         return $this->hasMany(Features::className(), ['id' => 'features_fk'])->viaTable('hotel_features', ['hotel_fk' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCityFk()
+    {
+        return $this->hasOne(City::className(), ['airport' => 'city_fk']);
     }
 
     /**

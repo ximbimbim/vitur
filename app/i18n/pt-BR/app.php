@@ -39,6 +39,13 @@ return [
 	'Map'					=> 'Mapa',
 	'Alert'					=> 'Alerta',
 		
+	/* Fly */
+	'Company' 				=> 'Companhia',
+	'Seat type' 			=> 'Tipo de assento',
+	'Price' 				=> 'Preço',
+	'Departure' 			=> 'Embarque',
+	'Landing' 				=> 'Desembarque',
+		
 	/* NAV MENU */
 	'Tours' 				=> 'Pacotes',
 	'Tickets' 				=> 'Passagens',

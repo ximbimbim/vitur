@@ -15,14 +15,15 @@ AngularAsset::register( $this );
 
 // Search app JS's
 $this->registerJsFile( '@web/js/web-app/hotel-app.js', [ 'depends' => 'app\assets\AngularAsset' ] );
+$this->registerJsFile( '@web/js/web-app/directives.js', [ 'depends' => 'app\assets\AngularAsset' ] );
 $this->registerCssFile( '@web/css/hotel_app.css', [ 'depends' => 'app\assets\AngularAsset' ] );
 ?>
 <div data-ng-app="searchApp">
 	<div data-ng-controller="searchCtrl">
-		<div data-ng-init="url.hotel_rest='<?= Url::toRoute( 'v0/hotels' ) ?>'"></div>
+		<div data-ng-init="url='<?= Url::toRoute( 'v0/hotels' ) ?>'"></div>
 		<div class="row hide" id="searchApp_viewer">			
 			<div class="col-md-4">
-				<form name="searchFrm" data-ng-submit="submitSearch('<?= Url::to( 'site/find-tour' ) ?>')" novalidate>
+				<form name="searchFrm" data-ng-submit="submitSearch()" novalidate>
 					<div class="vtr-form">
 						<div class="vtr-form-title"><?= Yii::t( 'app', 'Hotels' ) ?></div>
 						<div class="vtr-form-body">
@@ -35,7 +36,7 @@ $this->registerCssFile( '@web/css/hotel_app.css', [ 'depends' => 'app\assets\Ang
 							
 							<div class="form-group">
 								<label class="label label-default"><?= Yii::t( 'app', 'To' ) ?></label>
-								<input type="text" class="form-control" name="to" data-ng-model="searchData.to" required />
+								<input type="text" class="form-control" name="to" data-ng-model="formData.to" required />
 							</div>
 						</div>
 						
@@ -49,8 +50,8 @@ $this->registerCssFile( '@web/css/hotel_app.css', [ 'depends' => 'app\assets\Ang
 			</div> <!-- ./COL-LG -->
 			
 			<div class="col-md-8">
-				<p data-ng-show="ps().loading"><img src="<?= Url::to( '@web/img/loading.gif' ) ?>" class="pull-center" /></p>
-				<div data-ng-show="ps().pageData.length > 0">
+				<p data-ng-show="loading"><img src="<?= Url::to( '@web/img/loading.gif' ) ?>" class="pull-center" /></p>
+				<div data-ng-show="loading == false && pageData.length > 0">
 					<div class="vtr-order-bar clearfix">
 						<div class="vtr-order-title"></div>
 						<div class="vtr-order-input pull-right">
@@ -64,7 +65,7 @@ $this->registerCssFile( '@web/css/hotel_app.css', [ 'depends' => 'app\assets\Ang
 						</div>
 					</div> <!-- ./VTR-ORDER-BAR -->
 
-					<div class="vtr-tour-item" data-ng-repeat="hotel in ps().pageData">
+					<div class="vtr-tour-item" data-ng-repeat="hotel in pageData">
 						<div class="vtr-tour-img"><img data-ng-src="<?= Url::to( '@web/img/hotel' ) ?>_{{hotel.id}}.jpg" class="img-responsive" /></div>
 						<div class="vtr-tour-body">
 							<div style="display: inline-block; width: 100%; height: 100%; position: relative">
@@ -75,19 +76,16 @@ $this->registerCssFile( '@web/css/hotel_app.css', [ 'depends' => 'app\assets\Ang
 								</div>
 								<div class="vtr-price-box">
 									<h4 class="vtr-price-value"><sub>R$</sub> {{hotel.price}}<sup>,{{hotel.price % 100}}</sup></h4>
-									<h3 class="vtr-price-parcel"><sub>{{hotel.price/hotel.parcel}}x</sub> R$ {{hotel.parcel}}<sup>,{{hotel.parcel%100}}</sup></h3>
 								</div>
 							</div>
 						</div>
 					</div> <!-- ./VTR-TOUR-ITEM -->
 					
-					<div class="vtr-tool-bar">
-						<div class="vtr-pagination" data-ng-show="ps().pageCount > 1"></div>
-					</div> <!-- ./VTR-ORDER-BAR -->
+					<tool-bar data-page="page" data-page-count="pageCount" data-change-page="changePage"></tool-bar>
 				</div> <!-- ./#RESULT_DATA -->
 				
-				<div data-ng-show="ps().hasResult == false">
-					<h3>Nenhum pacote localizado, para este destino.</h3>
+				<div data-ng-show="pageCount == 0">
+					<h3>Nenhum hotel localizado, para este destino.</h3>
 				</div>
 			</div> <!-- ./COL-LG -->
 		</div> <!-- ./ROW -->

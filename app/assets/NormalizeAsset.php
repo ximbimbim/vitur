@@ -15,8 +15,4 @@ class NormalizeAsset extends AssetBundle
 	public $css = [
 		'normalize.css'
 	];
-	
-	public $depends = [
-		'yii\bootstrap\BootstrapPluginAsset'
-	];
 }

@@ -5,6 +5,7 @@ use yii\rest\ActiveController;
 
 use app\models\Hotels;
 use yii\data\ActiveDataProvider;
+use app\models\City;
 
 /**
  * HotelController
@@ -25,15 +26,15 @@ class HotelController extends ActiveController
 	 * actionIndex
 	 * @param unknown $to
 	 */
-	public function actionIndex( $to )
-	{		
+	public function actionIndex( $to, $pageSize = 2 )
+	{
 		$provider = new ActiveDataProvider([
 			'query' => Hotels::find()
-				->where([ 'to' => $to ])
+				->where([ 'city_fk' => City::findOne([ 'name' => $to ])->getAttribute( 'airport' ) ])
 				->with([ 'hotelFeatures', 'hotelFeatures.featuresFk' ])
 				->asArray(),
 			'pagination' => [
-				'pageSize' => 2,
+				'pageSize' => $pageSize,
 			],
 		]);
 		

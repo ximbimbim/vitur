@@ -6,12 +6,16 @@
 use yii\helpers\Html;
 
 use app\assets\NormalizeAsset;
+
 use yii\helpers\Url;
+
 use yii\bootstrap\Nav;
+use yii\bootstrap\BootstrapPluginAsset;
 
 NormalizeAsset::register( $this );
+BootstrapPluginAsset::register( $this );
 
-$this->registerCssFile( '@web/css/layout.css', [ 'depends' => 'app\assets\NormalizeAsset' ] );
+$this->registerCssFile( '@web/css/layout.css', [ 'depends' => [ 'app\assets\NormalizeAsset' ] ] );
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -68,7 +72,22 @@ $this->registerCssFile( '@web/css/layout.css', [ 'depends' => 'app\assets\Normal
 								[ 'url' => 'tickets', 'label' => Yii::t( 'app', 'Tickets' ) ],
 								[ 'url' => 'hotels',  'label' => Yii::t( 'app', 'Hotels' )  ],
 							],
-							'options' => [ 'class' => 'nav nav-center navbar-nav' ]
+							'options' => [ 'class' => 'nav navbar-nav' ]
+						]);
+					?>
+					<?=
+						Nav::widget([
+							'items' => [
+								'<li>
+									<form class="navbar-form navbar-left" role="search">
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="Search">
+										</div>
+										&nbsp;<a href="" class="glyphicon glyphicon-search"></a>
+									</form>
+								</li>'
+							],
+							'options' => [ 'class' => 'nav navbar-nav pull-right' ]
 						]);
 					?>
 				</div>

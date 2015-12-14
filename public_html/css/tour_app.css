@@ -34,7 +34,7 @@
 .vtr-form-body
 {
 	background-color: #e6fff7;
-	background-image: url("/vtr-app/public_html/img/vitur_palm.png");
+	background-image: url("/img/vitur_palm.png");
 	background-repeat: no-repeat;
 	background-position: 0% 100%;
 	border-bottom-right-radius: 10px;
@@ -132,6 +132,20 @@
 	border-left: 1px solid #333;
 	border-bottom: 1px solid #333;
 }
+@media (min-width: 1199px) {
+	.vtr-tour-img img
+	{
+		width: 300px;
+		height: 199px;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+	.vtr-tour-img img
+	{
+		width: 246px;
+		height: 163px;
+	}
+}
 .vtr-tour-body
 {
 	display: table-cell;
@@ -190,6 +204,12 @@
 	border: 1px solid #333;
 	padding: 5px 10px 5px 10px;
 	background-color: white;
+}
+.sel-ticket-box
+{
+	width: 150px;
+	border: none;
+	outline: none;
 }
 .vtr-ticket-table { margin: 10px auto; }
 .vtr-ticket-table td:first-child { padding: 0px 20px 0px 0px; }

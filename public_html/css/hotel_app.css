@@ -34,7 +34,7 @@
 .vtr-form-body
 {
 	background-color: #e6fff7;
-	background-image: url("/vtr-app/public_html/img/vitur_palm.png");
+	background-image: url("/img/vitur_palm.png");
 	background-repeat: no-repeat;
 	background-position: 0% 100%;
 	border-bottom-right-radius: 10px;
@@ -222,6 +222,7 @@
  	border-bottom-right-radius: 8px;
  	border-top: 4px solid yellow;
  	width: 100%;
+ 	min-height: 36px;
 }
 .vtr-tool-bar p
 {
